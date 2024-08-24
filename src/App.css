@@ -198,3 +198,10 @@ img { background: transparent; }
   display: flex;
   flex-direction: column;
 }
+
+.flex-container-song {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
