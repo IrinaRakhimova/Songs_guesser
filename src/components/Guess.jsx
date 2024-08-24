@@ -95,7 +95,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
             <div style={{ minHeight: '40px' }}>
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
-            <div className="flex-container-row">
+            <div className="flex-container">
                 <div className="flex-container-start">
                     <button onClick={handleShowHint} className="btn btn-light mb-3" style={{ width: '210px' }}>
                         <i className="bi bi-magic"></i> Hint 

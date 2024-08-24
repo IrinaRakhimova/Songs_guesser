@@ -146,13 +146,13 @@ img { background: transparent; }
 
 .flex-container-start {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: start;
 }
 
 .flex-container-end {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content:space-between;
   align-items: flex-end;
 }
