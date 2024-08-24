@@ -115,35 +115,37 @@ function Player({ token, uri, name, artist }) {
   } else {
     return (
       <div className='flex-container'>
-        <div className="container-player">
-            <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
-                {is_paused ? "PLAY" : "PAUSE"}
-            </button>
+        <div className="container-player">           
             <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>          
-            <img
-              src={showAnswer ? current_track.album.images[0].url : placeholderImage}
-              className="now-playing__cover"
-            />
-            <div className="now-playing__side">
-              {showAnswer ? (
-                <>
-                  <div className="now-playing__name">{current_track.name}</div>
-                  <div className="now-playing__artist">
-                    {current_track.artists.map((artist, index) => (
-                      <span key={index}>
-                        {artist.name}{index < current_track.artists.length - 1 ? ', ' : ''}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              ) : showHint ? (
-                <>
-                  <div className="now-playing__name">{current_track.name}</div>
-                  <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
-                </>
-              ) : null}              
-            </div>            
-          </div>
+                <img
+                src={showAnswer ? current_track.album.images[0].url : placeholderImage}
+                className="now-playing__cover"
+                />
+                <div className='flex-container'>
+                    <div className="now-playing__side">
+                    {showAnswer ? (
+                        <>
+                        <div className="now-playing__name">{current_track.name}</div>
+                        <div className="now-playing__artist">
+                            {current_track.artists.map((artist, index) => (
+                            <span key={index}>
+                                {artist.name}{index < current_track.artists.length - 1 ? ', ' : ''}
+                            </span>
+                            ))}
+                        </div>
+                        </>
+                    ) : showHint ? (
+                        <>
+                        <div className="now-playing__name">{current_track.name}</div>
+                        <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
+                        </>
+                    ) : null}              
+                    </div> 
+                    <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
+                        {is_paused ? "PLAY" : "PAUSE"}
+                    </button>           
+                </div>
+            </div>           
         </div>
         <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer}/>
       </div>
