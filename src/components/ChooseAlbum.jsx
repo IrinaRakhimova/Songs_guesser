@@ -17,7 +17,8 @@ const ChooseAlbum = ({ token }) => {
         .then(response => {
             if (!response.ok) {
                 if (response.status === 403) {
-                    throw new Error("Access forbidden. Check if the playlist is available or the token has the right scopes.");
+                console.log(token);    
+                throw new Error("Access forbidden. Check if the playlist is available or the token has the right scopes.");
                 }
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
