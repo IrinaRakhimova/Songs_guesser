@@ -115,7 +115,6 @@ function Player({ token, uri, name, artist }) {
   } else {
     return (
       <div className='flex-container'>
-        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} />
         <div className="container">
           <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>
             <img
@@ -146,6 +145,7 @@ function Player({ token, uri, name, artist }) {
             </button>
           </div>
         </div>
+        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} />
       </div>
     );
   }

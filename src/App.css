@@ -40,7 +40,7 @@
 }
 
 .main-wrapper {
-  padding: 30px;
+  padding: 15px;
   align-items: center;
   display: flex;
   height: 100%;
@@ -76,16 +76,18 @@
 }
 
 .now-playing__name {
-  font-size: 1.5em;
+  font-size: 1em;
   margin-bottom: 0.2em;
 }
 
 .now-playing__artist {
   margin-bottom: 1em;
+  
 }
 
 .now-playing__status {
   margin-bottom: 1em;
+  font-weight: 800;
 }
 
 .now-playing__cover {
@@ -125,6 +127,7 @@ img { background: transparent; }
 .guess {
   display: flex;
   flex-direction: column;
+  width: 476px;
 }
 
 .flex-container {
