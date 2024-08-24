@@ -70,7 +70,7 @@ const ChooseAlbum = ({ token }) => {
         <div className="app_width">
             <Header />
             <p className="m-3">I want to guess a ...</p>
-            <div className="mb-4"> 
+            <div> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
