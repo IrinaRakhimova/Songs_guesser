@@ -41,7 +41,6 @@ const ChooseAlbum = ({ token }) => {
                             uri: track.uri,
                         };
                     }
-                    console.log(token);
                     return null;
                 });
             }
