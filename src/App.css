@@ -127,15 +127,14 @@ img { background: transparent; }
 .guess {
   display: flex;
   flex-direction: column;
-  width: 476px;
+  width: 452px;
 }
 
 .flex-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 500px;
+  width: 452px;
 }
 
 .flex-container-row {
@@ -147,7 +146,8 @@ img { background: transparent; }
 .flex-container-start {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: space-between;
+  width: 452px;
 }
 
 .flex-container-end {

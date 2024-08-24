@@ -64,10 +64,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
 
     return (
         <div className="guess">
-            <p>Who's singing this song?</p>
             <div style={{ minHeight: '40px' }}>
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
+            <p>Who's singing this song?</p>          
             <div className="input-group mb-3 position-relative">
                 <input
                     className="form-control"
