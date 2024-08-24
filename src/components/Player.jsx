@@ -139,11 +139,11 @@ function Player({ token, uri, name, artist }) {
                   <div className="now-playing__name">{current_track.name}</div>
                   <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
                 </>
-              ) : null}
-              <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
-                {is_paused ? "PLAY" : "PAUSE"}
-              </button>
+              ) : null}              
             </div>
+            <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
+                {is_paused ? "PLAY" : "PAUSE"}
+            </button>
           </div>
         </div>
       </div>
