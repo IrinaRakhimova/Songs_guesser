@@ -124,22 +124,27 @@ function Player({ token, uri, name, artist }) {
                 <div className='flex-container'>
                     <div className="now-playing__side">
                     {showAnswer ? (
-                        <>
-                        <div className="now-playing__name">{current_track.name}</div>
-                        <div className="now-playing__artist">
-                            {current_track.artists.map((artist, index) => (
-                            <span key={index}>
-                                {artist.name}{index < current_track.artists.length - 1 ? ', ' : ''}
-                            </span>
-                            ))}
+                        <div className='song'>
+                            <div className="now-playing__name">{current_track.name}</div>
+                            <div className="now-playing__artist">
+                                {current_track.artists.map((artist, index) => (
+                                <span key={index}>
+                                    {artist.name}{index < current_track.artists.length - 1 ? ', ' : ''}
+                                </span>
+                                ))}
+                            </div>
                         </div>
-                        </>
                     ) : showHint ? (
-                        <>
-                        <div className="now-playing__name">{current_track.name}</div>
-                        <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
-                        </>
-                    ) : null}              
+                        <div>
+                            <div className="now-playing__name">{current_track.name}</div>
+                            <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="now-playing__name">???</div>
+                            <div className="now-playing__artist"></div>
+                        </div>
+                    )}              
                     </div> 
                     <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
                         {is_paused ? "PLAY" : "PAUSE"}
