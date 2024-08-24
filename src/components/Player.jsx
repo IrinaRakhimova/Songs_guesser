@@ -135,14 +135,14 @@ function Player({ token, uri, name, artist }) {
                             </div>
                         </div>
                     ) : showHint ? (
-                        <div>
+                        <div className='song'>
                             <div className="now-playing__name">{current_track.name}</div>
                             <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
                         </div>
                     ) : (
-                        <div>
+                        <div className='song'>
                             <div className="now-playing__name">???</div>
-                            <div className="now-playing__artist"></div>
+                            <div className="now-playing__artist">???</div>
                         </div>
                     )}              
                     </div> 
