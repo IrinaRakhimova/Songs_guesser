@@ -196,5 +196,5 @@ img { background: transparent; }
 
 .song {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
