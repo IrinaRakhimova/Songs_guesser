@@ -64,6 +64,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
 
     return (
         <div className="guess">
+            <div className="d-flex p-2 flex-container-end">
+                    <p>Correct: {correct}</p>
+                    <p>Incorrect: {incorrect}</p>
+            </div>
             <div style={{ minHeight: '40px' }}>
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
@@ -103,11 +107,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
                     <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '210px' }}>
                         <i className="bi bi-eye"></i> Show the right answer
                     </button>
-                </div>
-                <div className="d-flex p-2 flex-container-end">
-                    <p>Correct: {correct}</p>
-                    <p>Incorrect: {incorrect}</p>
-                </div>
+                </div>    
             </div>
         </div>
     );
