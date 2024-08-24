@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -20,19 +9,179 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.correct, .incorrect {
+  animation: blink 0.5s linear 3; 
+}
+
+.correct {
+  color: rgb(136, 221, 136);
+}
+
+.incorrect {
+  color: rgb(226, 148, 148);
+}
+.hidden {
+  display: none;
+}
+
+.main-wrapper {
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  z-index: 1;
+  border: 1px rgba(255, 255, 255, 0.493) solid;
+  border-radius: 8px;
+  margin-top: 40px;
+  animation: none;
+}
+
+.main-wrapper.playing {
+  animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+  50% {box-shadow: 0 0 20px rgba(255, 255, 255, 0.39);}
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  max-width: 1200px;
+  min-width: 900px;
+  margin-bottom: 30px;
+}
+
+.main-container {
+  flex: 1;
+}
+
+.now-playing__name {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+
+.now-playing__artist {
+  margin-bottom: 1em;
+}
+
+.now-playing__status {
+  margin-bottom: 1em;
+}
+
+.now-playing__cover {
+  border-radius: 8px;
+  float: left;
+  margin-right: 10px;
+  text-align: right;
+  width: 300px;
+  height: 300px;
+}
+
+.now-playing__side {
+  margin-left: 2%;
+  width: 45%;
+}
+
+.btn-spotify {
+  background-color:#44c767;
+  border-radius:28px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.btn-spotify:active {
+  position:relative;
+  top:1px;
+}
+
+img { background: transparent; }
+
+.guess {
+  max-width: 700px;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.flex-container-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.flex-container-end {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: flex-end;
+}
+
+.header {
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 10px;
+  color: #a2b3d4;
+}
+
+.dropdown-menu {
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
 }

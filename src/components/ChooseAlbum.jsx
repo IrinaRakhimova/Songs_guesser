@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Player from "./Player";
+import Header from "./Header";
 
-const RandomSong = ({ token }) => {
+const ChooseAlbum = ({ token }) => {
     const [randomSong, setRandomSong] = useState(null);
     
     function getRandomSongFromPlaylist(playlistId) {
@@ -66,31 +67,33 @@ const RandomSong = ({ token }) => {
  
     return (
         <div>
-            <h1>Guess the song</h1>
-            <p>Choose the genre</p>
-            <button 
-                type="button" 
-                className="btn btn-primary" 
-                onClick={() => handleSearch('37i9dQZF1DXbYM3nMM0oPk')}>Pop
-            </button> 
-            <button 
-                type="button" 
-                className="btn btn-primary" 
-                onClick={() => handleSearch('37i9dQZF1DX35DWKgAk2B5')}>Rock
-            </button> 
-            <button 
-                type="button" 
-                className="btn btn-primary" 
-                onClick={() => handleSearch('37i9dQZF1DX76t638V6CA8')}>Rap
-            </button> 
-            <button 
-                type="button" 
-                className="btn btn-primary" 
-                onClick={() => handleSearch('2ITDHAuMB7g3bSAjvTr1E2')}>Russian Songs
-            </button> 
+            <Header />
+            <p className="m-3">I want to guess a ...</p>
+            <div className="mb-4"> 
+                <button 
+                    type="button" 
+                    className="btn btn-primary me-2" 
+                    onClick={() => handleSearch('37i9dQZF1DXbYM3nMM0oPk')}>Pop Song
+                </button> 
+                <button 
+                    type="button" 
+                    className="btn btn-primary me-2" 
+                    onClick={() => handleSearch('37i9dQZF1DX35DWKgAk2B5')}>Rock Song
+                </button> 
+                <button 
+                    type="button" 
+                    className="btn btn-primary me-2" 
+                    onClick={() => handleSearch('37i9dQZF1DX76t638V6CA8')}>Rap Song
+                </button> 
+                <button 
+                    type="button" 
+                    className="btn btn-primary" 
+                    onClick={() => handleSearch('2ITDHAuMB7g3bSAjvTr1E2')}>Russian Song
+                </button> 
+            </div>
             {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist}/>}
         </div>
     );
 };
 
-export default RandomSong;
+export default ChooseAlbum;

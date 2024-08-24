@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Guess from './Guess';
+import placeholderImage from '../question.png';
 
 function Player({ token, uri, name, artist }) {
   const [is_paused, setPaused] = useState(false);
@@ -11,12 +12,13 @@ function Player({ token, uri, name, artist }) {
     album: { images: [{ url: "" }] },
     artists: [{ name: "" }]
   });
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
     script.async = true;
-
     document.body.appendChild(script);
 
     window.onSpotifyWebPlaybackSDKReady = () => {
@@ -31,7 +33,6 @@ function Player({ token, uri, name, artist }) {
       player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id);
         setDeviceId(device_id);
-
         playTrack(device_id, uri);
       });
 
@@ -44,6 +45,9 @@ function Player({ token, uri, name, artist }) {
 
         setTrack(state.track_window.current_track);
         setPaused(state.paused);
+
+        setShowAnswer(false);
+        setShowHint(false);
 
         player.getCurrentState().then(state => {
           setActive(!!state);
@@ -72,18 +76,15 @@ function Player({ token, uri, name, artist }) {
       headers: {
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({
-        uris: [uri]
-      })
+      body: JSON.stringify({ uris: [uri] })
     })
     .then(response => {
       if (!response.ok) {
         if (response.status === 404) {
           console.error("Device not found, retrying...");
-          // Retry logic: attempt to reconnect or refresh the device
           player.connect().then(success => {
             if (success) {
-              playTrack(device_id, uri); // Retry playing the track
+              playTrack(device_id, uri);
             }
           });
         } else {
@@ -94,24 +95,54 @@ function Player({ token, uri, name, artist }) {
     .catch(error => console.error("Error playing track:", error));
   };
 
+  const handleShowAnswer = () => {
+    setShowAnswer(true);
+    setShowHint(false); 
+  };
+
+  const handleShowHint = () => {
+    setShowHint(true);
+    setShowAnswer(false);
+  };
+
   if (!is_active) {
     return (
-      <div className="container">
-        <div className="main-wrapper">
-          <b>Wait for it...</b>
-        </div>
+      <div className="spinner-border m-5" role="status">
+        <span className="visually-hidden">Loading...</span>
       </div>
     );
   } else {
     return (
-      <div className="container">
-        <div className="main-wrapper">
-          <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" />
-          <div className="now-playing__side">
-            <div className="now-playing__name">{current_track.name}</div>
-            <div className="now-playing__artist">{current_track.artists[0].name}</div>
-            <button className="btn-spotify" onClick={() => { player.togglePlay() }}>{is_paused ? "PLAY" : "PAUSE"}</button>
-            <Guess name={name} artist={artist}/>
+      <div className='flex-container'>
+        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} />
+        <div className="container">
+          <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>
+            <img
+              src={showAnswer ? current_track.album.images[0].url : placeholderImage}
+              className="now-playing__cover"
+            />
+            <div className="now-playing__side">
+              {showAnswer ? (
+                <>
+                  <div className="now-playing__name">{current_track.name}</div>
+                  <div className="now-playing__artist">
+                    {current_track.artists.map((artist, index) => (
+                      <span key={index}>
+                        {artist.name}{index < current_track.artists.length - 1 ? ', ' : ''}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              ) : showHint ? (
+                <>
+                  <div className="now-playing__name">{current_track.name}</div>
+                  <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
+                </>
+              ) : null}
+              <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
+                {is_paused ? "PLAY" : "PAUSE"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

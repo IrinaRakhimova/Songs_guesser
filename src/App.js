@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import hash from "./hash";
 import LoginButton from "./components/LoginButton";
-import RandomSong from "./components/RandomSong";
+import ChooseAlbum from "./components/ChooseAlbum";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function App() {
   const [token, setToken] = useState(null);
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {!token ? <LoginButton /> : <RandomSong token={token}/>}
+        {!token ? <LoginButton /> : <ChooseAlbum token={token}/>}
       </header>
     </div>
   );

@@ -1,41 +1,116 @@
 import { useState } from "react";
+import '../App.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Guess = ({ name, artist }) => {
+const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
     const [answer, setAnswer] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
     const [resultMessage, setResultMessage] = useState("");
+    const [messageType, setMessageType] = useState("");
     const [correct, setCorrect] = useState(0);
     const [incorrect, setIncorrect] = useState(0);
 
-    const handleChange = (event) => {
-        setAnswer(event.target.value);
-    };
+    const fetchArtists = async (query) => {
+        if (query.length < 1) {
+            setSuggestions([]);
+            return;
+        }
 
-    const handleClick = () => {
-        if (answer.toLowerCase().includes(artist.toLowerCase())) {
-            setResultMessage(`Correct! The song is ${name} by ${artist}.`);
-            setAnswer("");
-            setCorrect(prevCorrect => prevCorrect + 1);
-        } else {
-            setResultMessage(`Incorrect. The song is ${name} by ${artist}.`);
-            setAnswer("");
-            setIncorrect(prevIncorrect => prevIncorrect + 1);
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=artist&limit=5`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,  
+                },
+            });
+            const data = await response.json();
+            setSuggestions(data.artists.items.map(artist => artist.name));
+        } catch (error) {
+            console.error("Error fetching artist suggestions:", error);
         }
     };
 
+    const handleChange = (event) => {
+        const value = event.target.value;
+        setAnswer(value);
+        fetchArtists(value);
+    };
+
+    const handleSuggestionClick = (suggestion) => {
+        setAnswer(suggestion);
+        setSuggestions([]);
+    };
+
+    const handleClick = () => {
+        if (!answer.trim()) {
+            return;
+        }
+
+        setMessageType("");
+
+        setTimeout(() => {
+            if (answer.toLowerCase().includes(artist.toLowerCase())) {
+                setResultMessage("Correct!");
+                setMessageType("correct");
+                setCorrect(prevCorrect => prevCorrect + 1);
+            } else {
+                setResultMessage("Oops! Try again.");
+                setMessageType("incorrect");
+                setIncorrect(prevIncorrect => prevIncorrect + 1);
+            }
+            setAnswer("");
+            setSuggestions([]);
+        }, 10);
+    };
+
     return (
-        <div>
-            <p>Who sings this song?</p>
-            <input 
-                type="text" 
-                value={answer} 
-                onChange={handleChange} 
-            />
-            <button onClick={handleClick}>Guess</button>
-            <p>{resultMessage}</p>
-            <p>Correct: {correct}</p>
-            <p>Incorrect: {incorrect}</p>
+        <div className="guess">
+            <p className="mt-5">Who's singing this song?</p>
+            <div className="input-group mb-3 position-relative">
+                <input
+                    className="form-control"
+                    type="text"
+                    value={answer}
+                    onChange={handleChange}
+                    placeholder="Start typing the artist's name..."
+                    aria-haspopup="true"
+                    aria-expanded={suggestions.length > 0}
+                />
+                <button className="btn btn-outline-light" type="button" onClick={handleClick}>Guess</button>
+                {suggestions.length > 0 && (
+                    <ul className="dropdown-menu show" style={{ width: '100%', position: 'absolute', top: '100%', zIndex: '1000' }}>
+                        {suggestions.map((suggestion, index) => (
+                            <li key={index}>
+                                <button 
+                                    type="button" 
+                                    className="dropdown-item" 
+                                    onClick={() => handleSuggestionClick(suggestion)}
+                                >
+                                    {suggestion}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+            <div style={{ minHeight: '40px' }}>
+                <p className={messageType}><strong>{resultMessage}</strong></p>
+            </div>
+            <div className="flex-container-row">
+                <div className="flex-container-start">
+                    <button onClick={handleShowHint} className="btn btn-light mb-3" style={{ width: '210px' }}>
+                        <i className="bi bi-magic"></i> Hint 
+                    </button>
+                    <button onClick={handleShowAnswer} className="btn btn-light" style={{ width: '210px' }}>
+                        <i className="bi bi-eye"></i> Show the right answer
+                    </button>
+                </div>
+                <div className="d-flex p-2 flex-container-end">
+                    <p>Correct: {correct}</p>
+                    <p>Incorrect: {incorrect}</p>
+                </div>
+            </div>
         </div>
     );
-}
+};
 
 export default Guess;
