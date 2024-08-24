@@ -115,7 +115,7 @@ function Player({ token, uri, name, artist }) {
   } else {
     return (
       <div className='flex-container'>
-        <div className="container">
+        <div className="container-player">
             <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
                 {is_paused ? "PLAY" : "PAUSE"}
             </button>
