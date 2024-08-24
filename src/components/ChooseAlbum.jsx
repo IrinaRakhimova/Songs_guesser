@@ -49,6 +49,7 @@ const ChooseAlbum = ({ token }) => {
     }
   
     function searchRandomSong(playlistId) {
+        console.log(token);
         getRandomSongFromPlaylist(playlistId)
         .then((randomTrack) => {
             if (randomTrack) {
