@@ -73,22 +73,22 @@ const ChooseAlbum = ({ token }) => {
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('37i9dQZF1DXbYM3nMM0oPk')}>Pop Song
+                    onClick={() => handleSearch('2OFfgjs6kj0eA6FNayhAAJ')}>Pop Song
                 </button> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('37i9dQZF1DX35DWKgAk2B5')}>Rock Song
+                    onClick={() => handleSearch('61jNo7WKLOIQkahju8i0hw')}>Rock Song
                 </button> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('37i9dQZF1DX76t638V6CA8')}>Rap Song
+                    onClick={() => handleSearch('7GjUYpEYbpQ6lMiGxLVCJQ')}>Rap Song
                 </button> 
                 <button 
                     type="button" 
                     className="btn btn-primary" 
-                    onClick={() => handleSearch('2ITDHAuMB7g3bSAjvTr1E2')}>Russian Song
+                    onClick={() => handleSearch('3PmV9kb73f3jsUxFLD8RIT')}>Russian Song
                 </button> 
             </div>
             {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist}/>}
