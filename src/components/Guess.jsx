@@ -64,7 +64,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
 
     return (
         <div className="guess">
-            <p className="mt-5">Who's singing this song?</p>
+            <p>Who's singing this song?</p>
+            <div style={{ minHeight: '40px' }}>
+                <p className={messageType}><strong>{resultMessage}</strong></p>
+            </div>
             <div className="input-group mb-3 position-relative">
                 <input
                     className="form-control"
@@ -91,16 +94,13 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
                         ))}
                     </ul>
                 )}
-            </div>
-            <div style={{ minHeight: '40px' }}>
-                <p className={messageType}><strong>{resultMessage}</strong></p>
-            </div>
+            </div>           
             <div className="flex-container">
                 <div className="flex-container-start">
-                    <button onClick={handleShowHint} className="btn btn-light mb-3" style={{ width: '210px' }}>
+                    <button onClick={handleShowHint} className="btn btn-light me-2" style={{ width: '210px' }}>
                         <i className="bi bi-magic"></i> Hint 
                     </button>
-                    <button onClick={handleShowAnswer} className="btn btn-light" style={{ width: '210px' }}>
+                    <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '210px' }}>
                         <i className="bi bi-eye"></i> Show the right answer
                     </button>
                 </div>
