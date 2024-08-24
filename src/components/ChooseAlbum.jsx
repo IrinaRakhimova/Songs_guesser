@@ -7,44 +7,27 @@ const ChooseAlbum = ({ token }) => {
     
     function getRandomSongFromPlaylist(playlistId) {
         const url = `https://api.spotify.com/v1/playlists/${playlistId}`;
-    
+      
         return fetch(url, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            const totalTracks = data.tracks.total;
-            if (totalTracks > 0) {
-                const randomOffset = Math.floor(Math.random() * totalTracks);
-    
-                const trackUrl = `${url}/tracks?offset=${randomOffset}&limit=1`;
-    
-                return fetch(trackUrl, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.items && data.items.length > 0) {
-                        const track = data.items[0].track;
-                        return {
-                            id: track.id,
-                            name: track.name,
-                            artist: track.artists[0].name,
-                            album: track.album.name,
-                            image: track.album.images[0].url,
-                            uri: track.uri,
-                        };
-                    }
-                    return null;
-                });
+        .then(response => {
+            if (!response.ok) {
+                if (response.status === 403) {
+                    throw new Error("Access forbidden. Check if the playlist is available or the token has the right scopes.");
+                }
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-            return null;
+            return response.json();
+        })
+        .then(data => {
+            // Continue processing data
+        })
+        .catch(error => {
+            console.error("Error fetching random track:", error.message);
         });
     }
   
