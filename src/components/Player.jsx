@@ -117,6 +117,9 @@ function Player({ token, uri, name, artist }) {
       <div className='flex-container'>
         <div className="container">
           <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>
+            <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
+                {is_paused ? "PLAY" : "PAUSE"}
+            </button>
             <img
               src={showAnswer ? current_track.album.images[0].url : placeholderImage}
               className="now-playing__cover"
@@ -139,10 +142,7 @@ function Player({ token, uri, name, artist }) {
                   <div className="now-playing__artist">{current_track.artists[0].name.charAt(0)}...</div>
                 </>
               ) : null}              
-            </div>
-            <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
-                {is_paused ? "PLAY" : "PAUSE"}
-            </button>
+            </div>            
           </div>
         </div>
         <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer}/>
