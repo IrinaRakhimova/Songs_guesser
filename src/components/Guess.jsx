@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
+const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer }) => {
     const [answer, setAnswer] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [resultMessage, setResultMessage] = useState("");
@@ -52,6 +52,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
                 setResultMessage("Correct!");
                 setMessageType("correct");
                 setCorrect(prevCorrect => prevCorrect + 1);
+                setShowAnswer(true);
             } else {
                 setResultMessage("Oops! Try again.");
                 setMessageType("incorrect");

@@ -145,7 +145,7 @@ function Player({ token, uri, name, artist }) {
             </button>
           </div>
         </div>
-        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} />
+        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer}/>
       </div>
     );
   }
