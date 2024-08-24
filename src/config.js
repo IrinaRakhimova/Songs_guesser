@@ -13,4 +13,5 @@ export const scopes = [
     "user-modify-playback-state",
     "app-remote-control",
     "playlist-read-collaborative",
+    "playlist-read-private",
 ];
