@@ -116,10 +116,10 @@ function Player({ token, uri, name, artist }) {
     return (
       <div className='flex-container'>
         <div className="container">
-          <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>
             <button className="btn-spotify" style={{ width: '120px' }} onClick={() => { player.togglePlay() }}>
                 {is_paused ? "PLAY" : "PAUSE"}
             </button>
+            <div className={`main-wrapper ${is_paused ? 'paused' : 'playing'}`}>          
             <img
               src={showAnswer ? current_track.album.images[0].url : placeholderImage}
               className="now-playing__cover"
