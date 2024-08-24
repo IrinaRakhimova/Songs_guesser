@@ -64,8 +64,8 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token }) => {
 
     return (
         <div className="guess">
-            <div className="d-flex p-2 flex-container-end">
-                    <p>Correct: {correct}</p>
+            <div className="d-flex pt-1 flex-container-end">
+                    <p className="m-0">Correct: {correct}</p>
                     <p>Incorrect: {incorrect}</p>
             </div>
             <div style={{ minHeight: '40px' }}>
