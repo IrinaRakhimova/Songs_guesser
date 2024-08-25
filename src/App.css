@@ -212,12 +212,14 @@ img { background: transparent; }
 }
 
 .score {
-  align-items: flex-start;
-  justify-content: space-between;
   background-color: #f8f9fa;
   color: #282c34;
-  padding: 6px 6px;
   border-radius: 8px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .guess-inner-container {
