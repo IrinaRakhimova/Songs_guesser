@@ -65,9 +65,9 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
 
     return (
         <div className="guess-container">
-            <div className="d-flex pt-1 flex-container-end">
-                        <p>Correct: {correct}</p>
-                        <p>Incorrect: {incorrect}</p>
+            <div className="score">
+                <p>Correct: {correct}</p>
+                <p>Incorrect: {incorrect}</p>
             </div>
             <div>
                 <div className="guess">                  

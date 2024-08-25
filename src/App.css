@@ -209,3 +209,7 @@ img { background: transparent; }
   display: flex;
   flex-direction: row;
 }
+
+.score {
+  display: flex;
+}
