@@ -1,6 +1,6 @@
 # Songs Guesser
 
-Welcome to **Songs Guesser**! This web application challenges users to identify the artist of a random song from various genres. The app uses the Spotify API to fetch songs, and users can guess the artist, get hints, or reveal the correct answer. 
+Welcome to **Songs Guesser**! This web application challenges users to identify the artist of a random song from various genres. The app uses the Spotify API to fetch songs, and users can guess the artist, get hints, or reveal the correct answer. **You need Spotify Premium to play.**
 
 ## Features
 
