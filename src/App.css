@@ -212,11 +212,17 @@ img { background: transparent; }
 .score {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .guess-inner-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
 }

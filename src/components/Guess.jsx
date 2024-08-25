@@ -71,15 +71,15 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
             <div className="guess-inner-container">
                 <table className="score">
                     <tr>
-                        <th>Score:</th>
+                        <th>Score</th>
                         <th></th>
                     </tr>
                     <tr>
-                        <td>Correct</td> 
+                        <td>Correct:</td> 
                         <td>{correct}</td>
                     </tr>
                     <tr>
-                        <td>Incorrect</td>
+                        <td>Incorrect:</td>
                         <td>{incorrect}</td>
                     </tr>
                 </table>
