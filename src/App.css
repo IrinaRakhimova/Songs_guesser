@@ -128,7 +128,6 @@ img { background: transparent; }
 .guess {
   display: flex;
   flex-direction: column;
-  width: 400px;
 }
 
 .flex-container {
