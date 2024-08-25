@@ -26,10 +26,6 @@ Welcome to **Songs Guesser**! This web application challenges users to identify 
 6. **Play/Pause**: Use the play/pause button to control the song playback.
 7. **View Score**: Your score will be updated based on your guesses.
 
-## Deployed Application
-
-You can access the live application here: [Songs Guesser](https://songs-guesser.onrender.com/)
-
 ## Setup and Development
 
 To run this application locally, follow these steps:
