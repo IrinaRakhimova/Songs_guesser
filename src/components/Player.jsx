@@ -121,7 +121,7 @@ function Player({ token, uri, name, artist }) {
                 src={showAnswer ? current_track.album.images[0].url : placeholderImage}
                 className="now-playing__cover"
                 />
-                <div className='flex-container-song'>
+                <div>
                     <div className="now-playing__side">
                     {showAnswer ? (
                         <div className='song'>

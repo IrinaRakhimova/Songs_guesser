@@ -204,3 +204,8 @@ img { background: transparent; }
   align-items: center;
   width: 350px;
 }
+
+.guess-container {
+  display: flex;
+  flex-direction: row;
+}
