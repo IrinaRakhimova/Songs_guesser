@@ -65,16 +65,16 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
 
     return (
         <div className="guess-container">
+            <div style={{ minHeight: '40px' }}>
+                <p className={messageType}><strong>{resultMessage}</strong></p>
+            </div>
+            <div></div>
             <div className="score">
                 <p>Correct: {correct}</p>
                 <p>Incorrect: {incorrect}</p>
             </div>
             <div>
-                <div className="guess">                  
-                    <div style={{ minHeight: '40px' }}>
-                        <p className={messageType}><strong>{resultMessage}</strong></p>
-                    </div>
-                    <p>Who's singing this song?</p>          
+                <div className="guess">                          
                     <div className="input-group mb-3 position-relative">
                         <input
                             className="form-control"
