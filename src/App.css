@@ -135,7 +135,7 @@ img { background: transparent; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 452px;
+  width: 400px;
 }
 
 .flex-container-row {
@@ -219,10 +219,11 @@ img { background: transparent; }
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 500px;
 }
 
 tr {
   display: flex;
   justify-content: space-between;
-  width: 80px;
+  width: 85px;
 }
