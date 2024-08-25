@@ -64,9 +64,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer,
                 setCorrect(prevCorrect => prevCorrect + 1);
                 setShowAnswer(true);
             } else {
-                setResultMessage("Oops! Try again.");
+                setResultMessage("Oops!");
                 setMessageType("incorrect");
                 setIncorrect(prevIncorrect => prevIncorrect + 1);
+                setShowAnswer(true);
             }
             setAnswer("");
             setSuggestions([]);
