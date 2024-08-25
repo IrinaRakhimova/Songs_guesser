@@ -68,50 +68,51 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
             <div style={{ minHeight: '40px' }}>
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
-            <div></div>
-            <div className="score">
-                <p>Correct: {correct}</p>
-                <p>Incorrect: {incorrect}</p>
-            </div>
             <div>
-                <div className="guess">                          
-                    <div className="input-group mb-3 position-relative">
-                        <input
-                            className="form-control"
-                            type="text"
-                            value={answer}
-                            onChange={handleChange}
-                            placeholder="Start typing the artist's name..."
-                            aria-haspopup="true"
-                            aria-expanded={suggestions.length > 0}
-                        />
-                        <button className="btn btn-outline-light" type="button" onClick={handleClick}>Guess</button>
-                        {suggestions.length > 0 && (
-                            <ul className="dropdown-menu show" style={{ width: '100%', position: 'absolute', top: '100%', zIndex: '1000' }}>
-                                {suggestions.map((suggestion, index) => (
-                                    <li key={index}>
-                                        <button 
-                                            type="button" 
-                                            className="dropdown-item" 
-                                            onClick={() => handleSuggestionClick(suggestion)}
-                                        >
-                                            {suggestion}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>           
-                    <div className="flex-container">
-                        <div className="flex-container-start">
-                            <button onClick={handleShowHint} className="btn btn-light me-2" style={{ width: '210px' }}>
-                                <i className="bi bi-magic"></i> Hint 
-                            </button>
-                            <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '210px' }}>
-                                <i className="bi bi-eye"></i> Show the right answer
-                            </button>
-                        </div>
-                    </div>    
+                <div className="score">
+                    <p>Correct: {correct}</p>
+                    <p>Incorrect: {incorrect}</p>
+                </div>
+                <div>
+                    <div className="guess">                          
+                        <div className="input-group mb-3 position-relative">
+                            <input
+                                className="form-control"
+                                type="text"
+                                value={answer}
+                                onChange={handleChange}
+                                placeholder="Start typing the artist's name..."
+                                aria-haspopup="true"
+                                aria-expanded={suggestions.length > 0}
+                            />
+                            <button className="btn btn-outline-light" type="button" onClick={handleClick}>Guess</button>
+                            {suggestions.length > 0 && (
+                                <ul className="dropdown-menu show" style={{ width: '100%', position: 'absolute', top: '100%', zIndex: '1000' }}>
+                                    {suggestions.map((suggestion, index) => (
+                                        <li key={index}>
+                                            <button 
+                                                type="button" 
+                                                className="dropdown-item" 
+                                                onClick={() => handleSuggestionClick(suggestion)}
+                                            >
+                                                {suggestion}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>           
+                        <div className="flex-container">
+                            <div className="flex-container-start">
+                                <button onClick={handleShowHint} className="btn btn-light me-2" style={{ width: '210px' }}>
+                                    <i className="bi bi-magic"></i> Hint 
+                                </button>
+                                <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '210px' }}>
+                                    <i className="bi bi-eye"></i> Show the right answer
+                                </button>
+                            </div>
+                        </div>    
+                    </div>
                 </div>
             </div>
         </div>
