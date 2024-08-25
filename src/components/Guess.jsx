@@ -68,7 +68,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
             <div style={{ minHeight: '40px' }}>
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
-            <div className="guess-inner-container">
+            <div className="guess-inner-container p-2">
                 <table className="score">
                     <tr>
                         <th>Score</th>
