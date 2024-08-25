@@ -114,10 +114,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
                         </div>           
                         <div className="flex-container">
                             <div className="flex-container-start">
-                                <button onClick={handleShowHint} className="btn btn-light me-2" style={{ width: '190px' }}>
+                                <button onClick={handleShowHint} className="btn btn-light me-2" style={{ width: '188px' }}>
                                     <i className="bi bi-magic"></i> Hint 
                                 </button>
-                                <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '190px' }}>
+                                <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '188px' }}>
                                     <i className="bi bi-eye"></i> Show the answer
                                 </button>
                             </div>
