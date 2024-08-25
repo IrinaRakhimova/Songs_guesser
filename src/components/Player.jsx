@@ -152,7 +152,7 @@ function Player({ token, uri, name, artist }) {
                 </div>
             </div>           
         </div>
-        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer}/>
+        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer} playPressed={playPressed} />
       </div>
     );
   }

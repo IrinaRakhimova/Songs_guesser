@@ -4,6 +4,7 @@ import Header from "./Header";
 
 const ChooseAlbum = ({ token }) => {
     const [randomSong, setRandomSong] = useState(null);
+    const [playPressed, setPlayPressed] = useState(false);
     
     function getRandomSongFromPlaylist(playlistId) {
         const url = `https://api.spotify.com/v1/playlists/${playlistId}`;
@@ -64,6 +65,7 @@ const ChooseAlbum = ({ token }) => {
 
     function handleSearch(playlistId) {
         searchRandomSong(playlistId);
+        setPlayPressed(true);
     }
  
     return (
@@ -92,7 +94,7 @@ const ChooseAlbum = ({ token }) => {
                     onClick={() => handleSearch('3PmV9kb73f3jsUxFLD8RIT')}>Russian Song
                 </button> 
             </div>
-            {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist}/>}
+            {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist} playPressed={playPressed}/>}
         </div>
     );
 };
