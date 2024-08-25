@@ -72,6 +72,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
                 <table className="score">
                     <tr>
                         <th>Score:</th>
+                        <th></th>
                     </tr>
                     <tr>
                         <td>Correct</td> 
