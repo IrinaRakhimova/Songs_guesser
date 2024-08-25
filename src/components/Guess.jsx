@@ -53,10 +53,12 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
                 setMessageType("correct");
                 setCorrect(prevCorrect => prevCorrect + 1);
                 setShowAnswer(true);
-            } else {
+            } else if (answer && !answer.toLowerCase().includes(artist.toLowerCase())) {
                 setResultMessage("Oops! Try again.");
                 setMessageType("incorrect");
                 setIncorrect(prevIncorrect => prevIncorrect + 1);
+            } else {
+                setResultMessage("Guess the artist.");
             }
             setAnswer("");
             setSuggestions([]);
