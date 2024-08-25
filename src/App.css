@@ -207,9 +207,14 @@ img { background: transparent; }
 
 .guess-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .score {
   display: flex;
+}
+
+.guess-inner-container {
+  display: flex;
+  flex-direction: row;
 }
