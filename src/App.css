@@ -163,6 +163,10 @@ img { background: transparent; }
   color: #a2b3d4;
 }
 
+.instruction {
+  color: #a2b3d4;
+}
+
 .dropdown-menu {
   padding: 0;
   margin: 0;
