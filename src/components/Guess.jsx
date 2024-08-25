@@ -118,7 +118,7 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
                                     <i className="bi bi-magic"></i> Hint 
                                 </button>
                                 <button onClick={handleShowAnswer} className="btn btn-light ms-2" style={{ width: '190px' }}>
-                                    <i className="bi bi-eye"></i> Show the right answer
+                                    <i className="bi bi-eye"></i> Show the answer
                                 </button>
                             </div>
                         </div>    
