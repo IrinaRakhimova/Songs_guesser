@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Guess from './Guess';
 import placeholderImage from '../question.png';
 
-function Player({ token, uri, name, artist }) {
+function Player({ token, uri, name, artist, newSong, setNewSong }) {
   const [is_paused, setPaused] = useState(false);
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
@@ -47,9 +47,6 @@ function Player({ token, uri, name, artist }) {
         setTrack(state.track_window.current_track);
         setPaused(state.paused);
 
-        setShowAnswer(false);
-        setShowHint(false);
-
         player.getCurrentState().then(state => {
           setActive(!!state);
         });
@@ -68,6 +65,8 @@ function Player({ token, uri, name, artist }) {
   useEffect(() => {
     if (deviceId) {
       playTrack(deviceId, uri);
+      setShowAnswer(false);
+      setShowHint(false);
     }
   }, [uri, deviceId]);
 
@@ -120,6 +119,7 @@ function Player({ token, uri, name, artist }) {
                 <img
                 src={showAnswer ? current_track.album.images[0].url : placeholderImage}
                 className="now-playing__cover"
+                alt=""
                 />
                 <div>
                     <div className="now-playing__side">
@@ -152,7 +152,7 @@ function Player({ token, uri, name, artist }) {
                 </div>
             </div>           
         </div>
-        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer} playPressed={playPressed} />
+        <Guess name={name} artist={artist} handleShowHint={handleShowHint} handleShowAnswer={handleShowAnswer} token={token} setShowAnswer={setShowAnswer} newSong={newSong} setNewSong={setNewSong}/>
       </div>
     );
   }

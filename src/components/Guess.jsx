@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer, playPressed }) => {
+const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer, newSong, setNewSong }) => {
     const [answer, setAnswer] = useState("");
     const [suggestions, setSuggestions] = useState([]);
-    const [resultMessage, setResultMessage] = useState("");
+    const [resultMessage, setResultMessage] = useState("Guess the artist");
     const [messageType, setMessageType] = useState("");
     const [correct, setCorrect] = useState(0);
     const [incorrect, setIncorrect] = useState(0);
+    const [disabledButton, setDisabledButton] = useState(false);
+
+    useEffect(() => {
+        if (newSong) {
+            setResultMessage("Guess the artist");
+            setMessageType(""); 
+            setNewSong(false);
+            setDisabledButton(false);  
+        }
+    }, [newSong, setNewSong]);
 
     const fetchArtists = async (query) => {
         if (query.length < 1) {
@@ -53,8 +63,6 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer,
                 setMessageType("correct");
                 setCorrect(prevCorrect => prevCorrect + 1);
                 setShowAnswer(true);
-            } else if (playPressed) {
-                setResultMessage("Guess the artist.");
             } else {
                 setResultMessage("Oops! Try again.");
                 setMessageType("incorrect");
@@ -62,7 +70,15 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer,
             }
             setAnswer("");
             setSuggestions([]);
+            setDisabledButton(true);
         }, 10);
+    };
+
+    const handleShowAnswerClick = () => {
+        setDisabledButton(true);
+        handleShowAnswer();
+        setIncorrect(prevIncorrect => prevIncorrect + 1);
+        setResultMessage("");
     };
 
     return (
@@ -82,8 +98,14 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer,
                                 placeholder="Start typing the artist's name..."
                                 aria-haspopup="true"
                                 aria-expanded={suggestions.length > 0}
+                                onKeyDown={(event) => {
+                                    if (event.key === "Enter") {
+                                        handleClick();
+                                    }
+                                }}
+                                disabled={disabledButton}
                             />
-                            <button className="btn btn-outline-light" type="button" onClick={handleClick}>Guess</button>
+                            <button className="btn btn-outline-light" type="button" onClick={handleClick} disabled={disabledButton}>Guess</button>
                             {suggestions.length > 0 && (
                                 <ul className="dropdown-menu show" style={{ width: '100%', position: 'absolute', top: '100%', zIndex: '1000' }}>
                                     {suggestions.map((suggestion, index) => (
@@ -102,10 +124,10 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer,
                         </div>           
                         <div className="flex-container">
                             <div className="flex-container-start">
-                                <button onClick={handleShowHint} className="btn btn-outline-light me-2" style={{ width: '166px' }}>
+                                <button onClick={handleShowHint} className="btn btn-outline-light me-2" style={{ width: '166px' }} disabled={disabledButton} >
                                     <i className="bi bi-magic"></i> Hint 
                                 </button>
-                                <button onClick={handleShowAnswer} className="btn btn-outline-light ms-2" style={{ width: '166px' }}>
+                                <button onClick={handleShowAnswerClick} className="btn btn-outline-light ms-2" style={{ width: '166px' }} disabled={disabledButton}>
                                     <i className="bi bi-eye"></i> Show the answer
                                 </button>
                             </div>

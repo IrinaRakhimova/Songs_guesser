@@ -4,7 +4,7 @@ import Header from "./Header";
 
 const ChooseAlbum = ({ token }) => {
     const [randomSong, setRandomSong] = useState(null);
-    const [playPressed, setPlayPressed] = useState(false);
+    const [newSong, setNewSong] = useState(false);
     
     function getRandomSongFromPlaylist(playlistId) {
         const url = `https://api.spotify.com/v1/playlists/${playlistId}`;
@@ -65,28 +65,28 @@ const ChooseAlbum = ({ token }) => {
 
     function handleSearch(playlistId) {
         searchRandomSong(playlistId);
-        setPlayPressed(true);
+        setNewSong(true);
     }
  
     return (
         <div className="app_width">
             <Header />
-            <p className="instruction">Choose a genre and guess who sings the song.</p>
+            <p className="instruction">Choose a genre and guess who sings the song</p>
             <div> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('2OFfgjs6kj0eA6FNayhAAJ')}>Pop Song
+                    onClick={() => handleSearch('37i9dQZF1EQncLwOalG3K7')}>Pop Song
                 </button> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('61jNo7WKLOIQkahju8i0hw')}>Rock Song
+                    onClick={() => handleSearch('37i9dQZF1EQpj7X7UK8OOF')}>Rock Song
                 </button> 
                 <button 
                     type="button" 
                     className="btn btn-primary me-2" 
-                    onClick={() => handleSearch('7GjUYpEYbpQ6lMiGxLVCJQ')}>Rap Song
+                    onClick={() => handleSearch('37i9dQZF1EIgbjUtLiWmHt')}>Rap Song
                 </button> 
                 <button 
                     type="button" 
@@ -94,7 +94,7 @@ const ChooseAlbum = ({ token }) => {
                     onClick={() => handleSearch('3PmV9kb73f3jsUxFLD8RIT')}>Russian Song
                 </button> 
             </div>
-            {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist} playPressed={playPressed}/>}
+            {randomSong && <Player uri={randomSong.uri} token={token} name={randomSong.name} artist={randomSong.artist} newSong={newSong} setNewSong={setNewSong}/>}
         </div>
     );
 };
