@@ -69,11 +69,19 @@ const Guess = ({ artist, handleShowAnswer, handleShowHint, token, setShowAnswer 
                 <p className={messageType}><strong>{resultMessage}</strong></p>
             </div>
             <div className="guess-inner-container">
-                <div className="score">
-                    <p>Score</p>
-                    <p>Correct {correct}</p>
-                    <p>Incorrect {incorrect}</p>
-                </div>
+                <table className="score">
+                    <tr>
+                        <th>Score:</th>
+                    </tr>
+                    <tr>
+                        <td>Correct</td> 
+                        <td>{correct}</td>
+                    </tr>
+                    <tr>
+                        <td>Incorrect</td>
+                        <td>{incorrect}</td>
+                    </tr>
+                </table>
                 <div>
                     <div className="guess">                          
                         <div className="input-group mb-3 position-relative">
